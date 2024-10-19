@@ -19,6 +19,7 @@
 #include <AP_InternalError/AP_InternalError.h>
 #include <AP_Logger/AP_Logger.h>
 #include <AP_Arming/AP_Arming.h>
+#include <AP_BLHeli/AP_BLHeli.h>
 #include <ch.h>
 
 extern const AP_HAL::HAL &hal;

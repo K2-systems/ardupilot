@@ -388,3 +388,9 @@ env BUILD_ABIN True
 # enable support for dshot on iomcu
 ROMFS io_firmware_dshot.bin Tools/IO_Firmware/iofirmware_f103_dshot_lowpolh.bin
 define HAL_WITH_IO_MCU_BIDIR_DSHOT 1
+
+# enable gimbal mount 
+undef HAL_MOUNT_ENABLED
+define HAL_MOUNT_ENABLED 1
+undef HAL_MOUNT_STORM32MAVLINK_ENABLED
+define HAL_MOUNT_STORM32MAVLINK_ENABLED 1
