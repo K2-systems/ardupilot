@@ -50,7 +50,7 @@ public:
     }
 
 private:
-
+    
     bool receive_data(void);
     void send_dref(const char *name, float value);
     void request_drefs(void);

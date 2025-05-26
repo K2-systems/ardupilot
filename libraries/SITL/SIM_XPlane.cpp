@@ -73,8 +73,11 @@ enum {
     EngineRPM           = 37,
     PropRPM             = 38,
     PropPitch           = 39,
+    BatteryAmperage     = 53,    // Battery amperage
+    BatteryVoltage      = 54,    // Battery voltage
     Generator           = 58,
     JoystickRaw         = 136,
+    BatteryWattHours    = 147,
 };
 
 enum RREF {
@@ -86,6 +89,8 @@ static const uint8_t required_data[] {
         LocVelDistTraveled, AngularVelocities, Gload,
         Trim,
         PropPitch, EngineRPM, PropRPM,
+        BatteryAmperage, BatteryVoltage, BatteryWattHours,
+        Generator,
         JoystickRaw };
 
 using namespace SITL;
@@ -486,7 +491,22 @@ bool XPlane::receive_data(void)
             rpm[1] = data[1];
             motor_mask |= 2;
             break;
-            
+        
+        case BatteryAmperage:
+            // Battery current in amps
+            battery_current = data[1];
+            break;
+
+        case BatteryVoltage:
+            // Battery voltage
+            battery_voltage = data[1];
+            break;
+
+        case BatteryWattHours:
+            // Battery energy in watt-hours
+            // battery_watt_hours = data[1];
+            break;
+
         case JoystickRaw: {
             for (auto *j = joyinputs; j; j=j->next) {
                 switch (j->type) {

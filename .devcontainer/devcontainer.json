@@ -10,7 +10,12 @@
         "--privileged",      // allows access to tty* devices
         "--group-add", "plugdev",  // for USB access
         "--device-cgroup-rule", "c 189:* rmw",  // for USB access
-        "--network=host",
+        // "--network=host",
+        "-p", "5760:5760/tcp",
+        "-p", "14550:14550/udp",
+        "-p", "14551:14551/udp",
+        "-p", "49000:49000/udp",
+        "-p", "49001:49001/udp",
         "-e", "DISPLAY=${localEnv:DISPLAY}",
         "-v", "/tmp/.X11-unix:/tmp/.X11-unix",
         "--cap-add=SYS_PTRACE",
@@ -20,6 +25,13 @@
         "source=${localWorkspaceFolder},target=/ardupilot,type=bind",
         "source=${localEnv:HOME}/.Xauthority,target=/home/ardupilot/.Xauthority,type=bind"
     ],
+    // "forwardPorts": [
+    //     5760,
+    //     14550,
+    //     14551,
+    //     49000,
+    //     49001
+    // ],
     "remoteUser": "ardupilot",
     "customizations": {
         "vscode": {
@@ -27,8 +39,7 @@
                 "llvm-vs-code-extensions.vscode-clangd",
                 "ms-vscode.cpptools",
                 "ms-vscode.cmake-tools",
-                "ms-python.python",
-                "twxs.cmake"
+                "ms-python.python"
             ],
             "settings": {
                 "terminal.integrated.defaultProfile.linux": "bash"

@@ -57,4 +57,8 @@ RUN echo "export PATH=/home/${USER_NAME}/.local/bin:\$PATH" >> /home/${USER_NAME
     && echo "export DISPLAY=:0" >> /home/${USER_NAME}/.bashrc \
     && echo "export PULSE_SERVER=unix:/tmp/pulse-socket" >> /home/${USER_NAME}/.bashrc
 
+EXPOSE 5760/tcp
+EXPOSE 49001/udp
+EXPOSE 49000/udp
+
 CMD ["/bin/bash"]
